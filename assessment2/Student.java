@@ -82,4 +82,43 @@ class StudentMarks {
         System.out.println("Error reading the file: " + e.getMessage());
     }
 }
+public void calculateTotalMark() {
+    System.out.println("Calculate student marks.");
+    for (Student student : students) {
+        System.out.println("Student name: " + student.firstName + " " + student.lastName);
+        System.out.println("Student ID: " + student.studentID);
+        System.out.println("Total mark: " + student.getTotalMark());
+        System.out.println();
+    }
+}
+public void StudentMarkThreshold(double threshold) {
+    System.out.println("Students with mark below given threshold of " + threshold + ": ");
+    for (Student student : students) {
+        if (student.getTotalMark() < threshold) {
+            System.out.println("Student Name: " + student.firstName + " " + student.lastName);
+            System.out.println("Student ID: " + student.studentID);
+            System.out.println("Total Mark: " + student.getTotalMark());
+            System.out.println();
+        }
+    }  
+}
+public void TopAndBottomMarks() {
+    List<Student> topMarks = new ArrayList<>();
+    List<Student> bottomMarks = new ArrayList<>();
+    for (Student student : students) {
+        if (topMarks.size() <5) {
+            topMarks.add(student);
+        } else {
+            for (int i = 0; i< topMarks(); i++) {
+                if (student.getTotalMark() > topMarks.get(i).getTotalMark()){
+                    topMarks.add(i, student);
+                    topMarks.remove(5);
+                    break;
+                }
+            }
+        }
+        }
+    }
+    
+}
 }
