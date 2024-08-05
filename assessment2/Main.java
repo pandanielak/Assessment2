@@ -145,4 +145,64 @@ public void TopAndBottomMarks() {
     }
 }
 
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        StudentMarks studentDetails = new StudentMarks();
+        boolean fileRead = false;
+
+        while (true) {
+            System.out.println("Menu:");
+            System.out.println("1. Read the file and show all records.");
+            if (fileRead) {
+                System.out.println("2. Show student's total marks");
+                System.out.println("3. Show students below given threshold");
+                System.out.println("4. Show 5 students with top marks and 5 students with bottom marks");
+            }
+            System.out.println("5. End");
+            System.out.println("Choose the action:");
+            int action = scanner.nextInt();
+
+            switch (action) {
+                case 1:
+                    scanner.nextLine();
+                    System.out.print("Type the name of .csv file followed by '.csv'");
+                    String fileName = scanner.nextLine();
+                    studentDetails.readFromFile(fileName);
+                    fileRead = true;
+                    break;
+                case 2:
+                    if (fileRead) {
+                        studentDetails.calculateTotalMark();
+                    } else {
+                        System.out.println("Please read the file first (Option 1).");
+                    }
+                    break;
+                case 3:
+                    if (fileRead) {
+                        System.out.print("Type the threshold (any decimal number between 0 and 100):");
+                        double threshold = scanner.nextDouble();
+                        studentDetails.StudentMarkThreshold(threshold);
+                    } else {
+                        System.out.println("Please read the file first (Option 1).");
+                    }
+                    break;
+                case 4:
+                    if (fileRead) {
+                        studentDetails.TopAndBottomMarks();
+                    } else {
+                        System.out.println("Please read the file first (Option 1).");
+                    }
+                    break;
+                case 5:
+                    System.out.println("Ending the program.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please select a number between 1 and 5.");
+            }
+        }
+    }
+}
     

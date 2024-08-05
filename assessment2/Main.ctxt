@@ -1,7 +1,9 @@
 #BlueJ class context
-comment0.target=Student
+comment0.target=Main
 comment1.params=firstName\ lastName\ studentID\ mark1\ mark2\ mark3
 comment1.target=Student(java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double,\ double)
 comment2.params=
 comment2.target=double\ getTotalMark()
-numComments=3
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
