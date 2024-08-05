@@ -37,7 +37,14 @@ class StudentMarks {
             return defaultValue;
         }
     }
-    
+    private void printStudents(List<Student> studentList) {
+        for (Student student : studentList) {
+            System.out.println("Student name: " + student.firstName + " " + student.lastName);
+            System.out.println("Student ID: " + student.studentID);
+            System.out.println("Total mark: " + student.getTotalMark());
+            System.out.println();
+        }
+    }
     public StudentMarks() {
         students = new ArrayList<>();
     }
@@ -130,6 +137,11 @@ public void TopAndBottomMarks() {
             }
         }
         }
+        System.out.println("5 students with the highest marks:");
+        printStudents(topMarks);
+        System.out.println("5 studetns with the lowest marks:");
+        printStudents(bottomMarks);
+        
     }
 }
 
