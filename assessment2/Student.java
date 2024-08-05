@@ -109,7 +109,7 @@ public void TopAndBottomMarks() {
         if (topMarks.size() <5) {
             topMarks.add(student);
         } else {
-            for (int i = 0; i< topMarks(); i++) {
+            for (int i = 0; i< topMarks.size(); i++) {
                 if (student.getTotalMark() > topMarks.get(i).getTotalMark()){
                     topMarks.add(i, student);
                     topMarks.remove(5);
@@ -117,8 +117,20 @@ public void TopAndBottomMarks() {
                 }
             }
         }
+        
+        if (bottomMarks.size() <5) {
+            bottomMarks.add(student);
+        } else {
+            for (int i = 0; i< bottomMarks.size(); i++) {
+                if (student.getTotalMark() > bottomMarks.get(i).getTotalMark()){
+                    bottomMarks.add(i, student);
+                    bottomMarks.remove(5);
+                    break;
+                }
+            }
+        }
         }
     }
+}
+
     
-}
-}
