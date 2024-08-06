@@ -5,4 +5,5 @@ Algorithm 3 to print the list of students with total marks less than a certain t
 4.	For each student in ‘students’ array, use getTotalMark to calculate total mark of the student:
 totalMark = mark1 + mark2 + mark3
 5.	Compare student’s total mark to threshold and print the outcome
-If student.getTotalMark < threshold, print Student name, ID and total mark.
+If student.getTotalMark < threshold
+print Student name, ID and total mark.
