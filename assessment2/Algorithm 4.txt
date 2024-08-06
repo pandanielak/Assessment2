@@ -1,0 +1,23 @@
+Algorithm 4: to print the top 5 students with the highest total marks and the top 5 students with the lowest total marks
+1.	Create function TopAndBottomMarks.
+2.	Create topMarks and bottomMarks empty lists.
+3.	Iterate through each student in students
+If size of list is lower than 5
+Add student object to topMarks
+Else
+For i = 0 to size of topMarks -1
+If student.getTotalMark() > topMarks[i].getTotalMark();
+Insert student object at index I and remove object from index 5
+4.	Iterate through each student in students
+If size of list is lower than 5
+Add student object to bottomMarks
+Else
+For i = 0 to size of topMarks -1
+If student.getTotalMark() < bottomMarks[i].getTotalMark();
+Insert student object at index I and remove object from index 5
+5.	Print both lists with student name, id and total mark.
+
+
+
+
+

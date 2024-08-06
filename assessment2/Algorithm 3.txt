@@ -1,0 +1,8 @@
+Algorithm 3 to print the list of students with total marks less than a certain threshold.
+1.	Create a method called StudentMarkThreshold with a variable double ‘threshold’ as input.
+2.	Create an array of students ‘students’ from the file.
+3.	Prompt user to give value of threshold as double, between 0 and 100.
+4.	For each student in ‘students’ array, use getTotalMark to calculate total mark of the student:
+totalMark = mark1 + mark2 + mark3
+5.	Compare student’s total mark to threshold and print the outcome
+If student.getTotalMark < threshold, print Student name, ID and total mark.
