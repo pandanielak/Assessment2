@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
 
+
+//Defining Student class to store information about student
 class Student {
     String firstName;
     String lastName;
@@ -13,7 +15,7 @@ class Student {
     double mark2;
     double mark3;
     double totalMark;
-    
+    //Student details Constructor
     public Student(String firstName, String lastName, String studentID, double mark1, double mark2, double mark3) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,16 +29,18 @@ class Student {
         return totalMark;
     }
 }
-
+//Defining StudentMarks class to store and manage information about student marks
 class StudentMarks {
     private List<Student> students;
-      private double parseDoubleWithDefault(String str, double defaultValue) {
+    //Method to parse string to double  
+    private double parseDoubleWithDefault(String str, double defaultValue) {
         try {
             return Double.parseDouble(str);
         } catch (NumberFormatException e) {
             return defaultValue;
         }
     }
+    //Method to print student details
     private void printStudents(List<Student> studentList) {
         for (Student student : studentList) {
             System.out.println("Student name: " + student.firstName + " " + student.lastName);
@@ -45,9 +49,11 @@ class StudentMarks {
             System.out.println();
         }
     }
+    //Student list Constructor
     public StudentMarks() {
         students = new ArrayList<>();
     }
+    //Method to read data from a file
     public void readFromFile(String fileName) {
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -89,6 +95,7 @@ class StudentMarks {
         System.out.println("Error reading the file: " + e.getMessage());
     }
 }
+//Method to calculate and print student total marks
 public void calculateTotalMark() {
     System.out.println("Calculate student marks.");
     for (Student student : students) {
@@ -98,6 +105,7 @@ public void calculateTotalMark() {
         System.out.println();
     }
 }
+//Method to print students with marks below a given threshold
 public void StudentMarkThreshold(double threshold) {
     System.out.println("Students with mark below given threshold of " + threshold + ": ");
     for (Student student : students) {
@@ -109,6 +117,7 @@ public void StudentMarkThreshold(double threshold) {
         }
     }  
 }
+//Method to print 5 top and 5 bottom students
 public void TopAndBottomMarks() {
     List<Student> topMarks = new ArrayList<>();
     List<Student> bottomMarks = new ArrayList<>();
@@ -129,7 +138,7 @@ public void TopAndBottomMarks() {
             bottomMarks.add(student);
         } else {
             for (int i = 0; i< bottomMarks.size(); i++) {
-                if (student.getTotalMark() > bottomMarks.get(i).getTotalMark()){
+                if (student.getTotalMark() < bottomMarks.get(i).getTotalMark()){
                     bottomMarks.add(i, student);
                     bottomMarks.remove(5);
                     break;
@@ -168,8 +177,12 @@ public class Main {
             switch (action) {
                 case 1:
                     scanner.nextLine();
-                    System.out.print("Type the name of .csv file followed by '.csv'");
+                    System.out.print("Type in the name of .csv file followed by '.csv'");
                     String fileName = scanner.nextLine();
+                    if (fileName.isEmpty() || !fileName.endsWith(".csv")) {
+                        System.out.println("Invalid file name. Please type in a valid .csv file name.");
+                        continue;
+                    }
                     studentDetails.readFromFile(fileName);
                     fileRead = true;
                     break;
