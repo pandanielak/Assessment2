@@ -4,6 +4,7 @@ import java.util.List;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.util.InputMismatchException;
 
 
 //Defining Student class to store information about student
@@ -172,7 +173,17 @@ public class Main {
             }
             System.out.println("5. End");
             System.out.println("Choose the action:");
-            int action = scanner.nextInt();
+            int action;
+            //Handling wrong input
+            try{
+                action = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter numbers only.");
+                scanner.nextLine();
+                continue;
+            }
+            
 
             switch (action) {
                 case 1:
@@ -196,12 +207,22 @@ public class Main {
                 case 3:
                     if (fileRead) {
                         System.out.print("Type the threshold (any decimal number between 0 and 100):");
-                        double threshold = scanner.nextDouble();
-                        studentDetails.StudentMarkThreshold(threshold);
+                        try {
+                            double threshold = scanner.nextDouble();
+                            scanner.nextLine(); 
+                            if (threshold < 0 || threshold > 100) {
+                                System.out.println("Invalid threshold. Please enter a value between 0 and 100.");
+                                continue;
+                            }
+                            studentDetails.StudentMarkThreshold(threshold);
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a decimal number.");
+                            scanner.nextLine();
+                        }
                     } else {
                         System.out.println("Please read the file first (Option 1).");
                     }
-                    break;
+                    break; 
                 case 4:
                     if (fileRead) {
                         studentDetails.TopAndBottomMarks();
@@ -217,5 +238,5 @@ public class Main {
             }
         }
     }
+
 }
-    
